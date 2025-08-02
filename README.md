@@ -360,7 +360,7 @@ decrypted_flag = xor_decrypt_flag(IRC_PROCESS_FLAGTEXT, encrypted_pass)
 
 ### **Exécution du Script Final**
 ```bash
-python decrypt_final.py
+python decrypt.py
 ```
 
 
