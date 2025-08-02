@@ -3,13 +3,16 @@
 Ceci est ma solution  pour le challenge du type reverse engineering
 Dans le cadre du **Meetup Ambassadors CTF**.
 
+<img width="1778" height="915" alt="image" src="https://github.com/user-attachments/assets/cb6dca02-1fdc-4c56-8ebe-b5cab3a419d9" />
+
+
 ## **Petit aperçu du  challenge**
 
 - **Plateforme** : HackTheBox
 - **Catégorie** : Reverse Engineering
 - **Difficulté** : Medium
 - **Description du chall** : "During a routine check on our servers we found this suspicious binary, but when analyzing it we couldn't get it to do anything. We assume it's dead malware but maybe something interesting can still be extracted from it?"
-
+  
 ##  **OBJECTIF**
 
 L'objectif est alors de retrouver le flag caché dans le binaire malveillant de type IRC Bot.
@@ -19,6 +22,7 @@ L'objectif est alors de retrouver le flag caché dans le binaire malveillant de 
 
 [Accessibles ici](https://github.com/Patrickleondev/Meetup-Ambassadors-CTF---Reverse-Challenge-Writeup/blob/main/rev_ircbot.zip)  ou dans le repertoire.
 
+Avant de commencer je vous invite à lire sur tout ce qui concerne [fonctionnement les Malware Botnets IRC](https://www.zscaler.com/fr/blogs/security-research/irc-botnets-alive-effective-evolving) c'est assez instructif.
 
 ##  **ÉTAPE 1 : ANALYSE INITIALE**
 
@@ -58,7 +62,7 @@ le binaire est un exécutable Linux 64-bit, donc typique pour un malware.
 En analysant la fenêtre "Functions", j'identifie plusieurs fonctions importantes :
 
 
-Voici en resumé une description de chaque fonction retrouvée (Je ne pourrais pas fournir les codes, au rique de rendre ennuyant ce writeup )
+Voici en resumé une description de chaque fonction retrouvée:
 
 ```
 _start()           // qui est bien evidemment le point d'entrée principal
@@ -74,8 +78,11 @@ IRC_EXTERNALCMD()  // Exécution de commandes
 ---
 
 ##  **ÉTAPE 3 : ANALYSE DE LA FONCTION START**
+<img width="509" height="302" alt="image" src="https://github.com/user-attachments/assets/622472dc-74e9-4ba0-a557-43b0cd3ab93f" />
+
 
 ### **Code Décompilé de `_start()`**
+
 ```c
 signed __int64 start()
 {
@@ -112,6 +119,8 @@ signed __int64 start()
 
 ## **ÉTAPE 4 : ANALYSE DE LA CONNEXION IRC**
 
+<img width="653" height="218" alt="image" src="https://github.com/user-attachments/assets/59193093-1030-4ba5-ab48-9f623ba2c920" />
+
 ### **Fonction `IRC_CONNECT()`**
 ```c
 signed __int64 IRC_CONNECT()
@@ -127,7 +136,7 @@ signed __int64 IRC_CONNECT()
 }
 ```
 
- ** C'est ici j'ai une information assez capital qui m'a permis meme de comprendre generally le fonctionnement d'un botnet (J'avais recherché sur internet, mais pour ça démeurait toujours abstrait) :
+ ** ici,  j'ai eu une information assez capital qui m'a permis meme de comprendre generally le fonctionnement d'un botnet (J'avais recherché sur internet, mais pour ça démeurait toujours abstrait) :
 
 ### Une découverte de l'Adresse de Connexion**
 - **v2 = 16777343** : En hexadécimal = `0x0100007F` = `127.0.0.1` (le localhost)
@@ -144,6 +153,8 @@ signed __int64 IRC_CONNECT()
 
 ### **Fonction `IRC_PROCESS_READ()` - Le Cœur du Malware** 
 
+<img width="625" height="355" alt="image" src="https://github.com/user-attachments/assets/62d6bc0d-fe17-4789-b58f-adff0bdb9e03" />
+
 (Ceux qui on recherché sur ce type de botnet le savent déjà probablement)
 
 Cette fonction est la plus intéressante car elle traite différents types de messages IRC (Internet Relay Chat) ici pour en savoir plus :
@@ -155,6 +166,7 @@ Cette fonction est la plus intéressante car elle traite différents types de me
 4. **FLAG** : Affichage du flag chiffré
 
 #### **Logique de Déchiffrement du Mot de Passe**
+Partie qui nous interresse, 
 ```c
 
 if ( (unsigned __int8)v18 >= 0x41u && (unsigned __int8)v18 <= 0x5Au )
@@ -183,7 +195,7 @@ for ( i = &IRC_PROCESS_FLAGTEXT; *i; ++i )
 
 ##  **ÉTAPE 6 : EXTRACTION DES DONNÉES**
 
-### **Recherche des Adresses Importantes**
+### **Recherche des Adresses Importantes pour les extraire ( ce que l'analyse des fonctions a revélé)**
 En utilisant la fenêtre "Names", je trouve les adresses suivantes :
 
 ```
@@ -201,7 +213,9 @@ et aussi les nom etaient un peu evident à mes yeux ex: je sais que LEN==Lenght,
 
 En naviguant vers ces adresses dans la vue "Hex View-1" :
 
-#### **1-) Je trouve un now le mot passe : IRC_PROCESS_PASS (à Adresse 0x40313C)**
+<img width="1210" height="721" alt="address" src="https://github.com/user-attachments/assets/4abee1d6-a635-4197-8a33-47defec1b7a1" />
+
+#### **1-) Je trouve un now le mot passe : IRC_PROCESS_PASS (à Adresse 0x403130)**
 ```
 4D 33 55 76 31 51 69 30 00
 ```
@@ -221,7 +235,7 @@ Valeur : `8` (longueur du mot de passe)
 
 ---
 
-##  **ÉTAPE 7 : DÉVELOPPEMENT DU SCRIPT DE DÉCHIFFREMENT**
+##  **STEP 7 : DÉVELOPPEMENT DU SCRIPT DE DÉCHIFFREMENT**
 
 Vue que chaque step etait important et décisive pour le dev du script, voici un overview de ce que j'ai noté:
 
@@ -280,9 +294,8 @@ print(f"Flag: HTB{{{decrypted_flag}}}")
 
 ---
 
-## **ÉTAPE 8 : TESTS ET VALIDATION**
+## **STEP 8 : TESTS ET VALIDATION**
 
-C'était un peu décourageant les tests, mais avec un peu d'endurance, ça pourrait aller, et c'est ce que me manquait...
 
 ### **Premiers Tests**
 ```bash
@@ -290,7 +303,9 @@ python decrypt.py
 # Résultat : HTB{ZTN{g"0dM0=d_{rcMb<tn!t}F}
 ```
 
-Le flag ne semble pas correct. Je dois ajuster ma compréhension.
+what a hell ? 😂, Ok je dois je vois au moins un format qui saute à l'oeil , et c'est ici mon endurance a été multiplié  par 1000.
+
+Remarque : Le flag ne semble pas correct. Je dois ajuster ma compréhension. 
 
 ### **Analyse Plus Approfondie**
 En relisant le code du malware, je comprends que :
@@ -298,7 +313,8 @@ En relisant le code du malware, je comprends que :
 - Le malware chiffre l'entrée utilisateur avec ROT19 pour la comparer
 - Pour le flag, il faut utiliser le mot de passe déchiffré par ROT19
 
-### **Alors voici la Correction du Script** (Bien qu'il y a d'autre outils pour le CHIFFREMENT/DECIFFREMENT ROT19, je préfère aller manuellement pour bien avoir la main pour la prochaine fois)
+### **Alors voici la Correction du Script** (Bien qu'il y a d'autre outils pour le CHIFFREMENT/DECIFFREMENT ROT19, je préfère aller manuellement pour bien avoir de la main pour la prochaine fois)
+
 ```python
 #Le mot de passe stocké est déjà déchiffré
 #Je dois le chiffrer avec ROT19 pour obtenir la clé de déchiffrement
@@ -322,24 +338,30 @@ decrypted_flag = xor_decrypt_flag(IRC_PROCESS_FLAGTEXT, encrypted_pass)
 
 ---
 
-##  **ÉTAPE 9 : OBTENTION DU FLAG 😁**
+##  **STEP 9 : OBTENTION DU FLAG 😁**
 
 ### **Exécution du Script Final**
 ```bash
 python decrypt_final.py
 ```
 
+
+<img width="1242" height="677" alt="image" src="https://github.com/user-attachments/assets/b2896f82-433d-4c6a-b6ea-066db8a8f27d" />
+
 **Résultat** :
 ```
 Test 3: HT{g00d_01d_irc_b0tn3t}
 ```
 
-Au debut j'ai copié et j'ai paste comme ça, what a hell ? 🤣🤣.
+Au debut j'ai copié et j'ai paste comme ça, et c'était wrong.
 
 Mais bon relax, j'ai revu le format du flag, puis jack pot !!!
 
 ---
 
 
-
 Le flag  : `HTB{g00d_01d_irc_b0tn3t}` 
+
+## Fin.
+
+Merci de m'avoir suivi jusqu'à la fin !!!
