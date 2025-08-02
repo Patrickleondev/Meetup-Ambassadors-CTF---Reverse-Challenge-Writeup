@@ -46,6 +46,7 @@ Ici c'est l'interpreteur ``` /lib64/ld-linux-x86-64.so.2  ``` qui est chargé pa
 
 le binaire est un exécutable Linux 64-bit, donc typique pour un malware.
 
+[Accessibles ici](https://github.com/Patrickleondev/Meetup-Ambassadors-CTF---Reverse-Challenge-Writeup/blob/main/rev_ircbot.zip)  ou dans le repertoire.
 ---
 
 ##  **ÉTAPE 2 : OUVERTURE DANS Mon IDA freeware **
