@@ -26,7 +26,7 @@ IRC== [Internet Relay Chat](https://fr.wikipedia.org/wiki/Internet_Relay_Chat)
 
 Avant de commencer je vous invite à lire sur tout ce qui concerne le [fonctionnement des Malware Botnets IRC](https://www.zscaler.com/fr/blogs/security-research/irc-botnets-alive-effective-evolving) c'est assez instructif.
 
-##  **ÉTAPE 1 : ANALYSE INITIALE**
+##  **STEP 1 : ANALYSE INITIALE**
 
 ### **Première Impression**
 En ouvrant le dossier, je vois un binaire `ircbot` que j'ai eu à  analyser de manière vraiment statique et approfondie (Assembly + le pseudo-code C) car je n'ai pas pu exécuter le malware, juste focus sur les fonctions dans le code.
@@ -55,7 +55,7 @@ le binaire est un exécutable Linux 64-bit, donc typique pour un malware.
 
 ---
 
-##  **ÉTAPE 2 : OUVERTURE DANS Mon IDA freeware **
+##  **STEP 2 : OUVERTURE DANS Mon IDA freeware **
 
 <img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/58be06d2-c916-4ea6-86d3-739c99ad21eb" />
 
@@ -79,7 +79,7 @@ IRC_EXTERNALCMD()  // Exécution de commandes
 
 ---
 
-##  **ÉTAPE 3 : ANALYSE DE LA FONCTION START**
+##  **STEP 3 : ANALYSE DE LA FONCTION START**
 <img width="509" height="302" alt="image" src="https://github.com/user-attachments/assets/622472dc-74e9-4ba0-a557-43b0cd3ab93f" />
 
 
@@ -119,7 +119,7 @@ signed __int64 start()
 
 ---
 
-## **ÉTAPE 4 : ANALYSE DE LA CONNEXION IRC**
+## **STEP 4 : ANALYSE DE LA CONNEXION IRC**
 
 <img width="653" height="218" alt="image" src="https://github.com/user-attachments/assets/59193093-1030-4ba5-ab48-9f623ba2c920" />
 
@@ -151,7 +151,7 @@ signed __int64 IRC_CONNECT()
 à partir d'ici tout était devenu interressant et très informative, j'avais mon notebook à coté pour ne rien laisser...
 ---
 
-## **ÉTAPE 5 : ANALYSE DU TRAITEMENT DES COMMANDES**
+## **STEP 5 : ANALYSE DU TRAITEMENT DES COMMANDES**
 
 ### **Fonction `IRC_PROCESS_READ()` - Le Cœur du Malware** 
 
@@ -195,7 +195,7 @@ for ( i = &IRC_PROCESS_FLAGTEXT; *i; ++i )
 
 ---
 
-##  **ÉTAPE 6 : EXTRACTION DES DONNÉES**
+##  **STEP 6 : EXTRACTION DES DONNÉES**
 
 ### **Recherche des Adresses Importantes pour les extraire ( ce que l'analyse des fonctions a revélé)**
 En utilisant la fenêtre "Names", je trouve les adresses suivantes :
