@@ -330,7 +330,7 @@ En relisant le code du malware, je comprends que :
 - Le malware chiffre l'entrée utilisateur avec ROT19 pour la comparer
 - Pour le flag, il faut utiliser le mot de passe déchiffré par ROT19
 
-### **Alors voici la Correction du Script** (Bien qu'il y a d'autre outils pour le CHIFFREMENT/DECIFFREMENT ROT19, je préfère aller manuellement pour bien avoir de la main pour la prochaine fois)
+### **Alors voici la Correction du Script** (Bien qu'il y a d'autre outils pour le chiffrement/déchiffrement ROT19, je préfère aller manuellement pour bien avoir de la main pour la prochaine fois)
 
 ```python
 #Le mot de passe stocké est déjà déchiffré
