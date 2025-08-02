@@ -29,7 +29,23 @@ Avant de commencer je vous invite à lire sur tout ce qui concerne le [fonctionn
 ##  **STEP 1 : ANALYSE INITIALE**
 
 ### **Première Impression**
-En ouvrant le dossier, je vois un binaire `ircbot` que j'ai eu à  analyser de manière vraiment statique et approfondie (Assembly + le pseudo-code C) car je n'ai pas pu exécuter le malware, juste focus sur les fonctions dans le code.
+En ouvrant le dossier, je vois un binaire `ircbot` que j'ai eu à  analyser de manière vraiment statique et approfondie (Assembly + le pseudo-code C), juste focus sur les fonctions dans le code.
+
+Voici ce que me donne l'execution: 
+
+```bash
+
+┌──(kali㉿kali)-[/media/sf_Downloads/rev_ircbot]
+└─$ chmod +x ircbot                                  
+                                                                                                                                       
+┌──(kali㉿kali)-[/media/sf_Downloads/rev_ircbot]
+└─$ ./ircbot    
+EXCEPTION! ABORT                                                                                                                                       
+┌──(kali㉿kali)-[/media/sf_Downloads/rev_ircbot]
+└─$ 
+
+
+```
 
 
 <img width="959" height="520" alt="image" src="https://github.com/user-attachments/assets/a379719a-10d9-430b-b6d8-f6970f4b370a" />
