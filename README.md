@@ -160,7 +160,6 @@ signed __int64 IRC_CONNECT()
 - **v2 = 16777343** : En hexadécimal = `0x0100007F` = `127.0.0.1` (le localhost)
 - **v1[1] = 16415** : Port en little-endian = `0x401F` = port 16415 
 
-(Ah heureusement je sais que rien je ne serait cadeau et que je devrais toujours dealer avec les hex 😂💀)
 
 **leçon tirée pour la suite** : Le malware se connecte à `127.0.0.1:16415`
 
@@ -321,7 +320,7 @@ python decrypt.py
 # Résultat : HTB{ZTN{g"0dM0=d_{rcMb<tn!t}F}
 ```
 
-what a hell ? 😂, Ok je dois je vois au moins un format qui saute à l'oeil , et c'est ici mon endurance a été multiplié  par 1000.
+what a hell ? 😂, Ok je vois au moins un format qui saute à l'oeil , et c'est ici mon endurance a été multiplié  par 1000.
 
 Remarque : Le flag ne semble pas correct. Je dois ajuster ma compréhension. 
 
