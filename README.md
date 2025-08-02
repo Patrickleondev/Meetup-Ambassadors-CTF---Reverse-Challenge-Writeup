@@ -136,7 +136,7 @@ signed __int64 IRC_CONNECT()
 }
 ```
 
- ** ici,  j'ai eu une information assez capital qui m'a permis meme de comprendre generally le fonctionnement d'un botnet (J'avais recherché sur internet, mais pour ça démeurait toujours abstrait) :
+  Ici,  j'ai eu une information assez capitale qui m'a permis meme de comprendre generally le fonctionnement d'un botnet (J'avais recherché sur internet, mais pour ça démeurait toujours abstrait) :
 
 ### Une découverte de l'Adresse de Connexion**
 - **v2 = 16777343** : En hexadécimal = `0x0100007F` = `127.0.0.1` (le localhost)
