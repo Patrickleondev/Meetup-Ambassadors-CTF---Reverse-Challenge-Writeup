@@ -3,7 +3,7 @@
 Ceci est ma solution  pour le challenge du type reverse engineering
 Dans le cadre du **Meetup Ambassadors CTF**.
 
-## **Petit aperçu du  chall**
+## **Petit aperçu du  challenge**
 
 - **Plateforme** : HackTheBox
 - **Catégorie** : Reverse Engineering
@@ -16,14 +16,17 @@ L'objectif est alors de retrouver le flag caché dans le binaire malveillant de 
 
 ##  **FICHIERS FOURNIS**
 
-Juste un seul file était rttaché au chall,
-
+https://github.com/Patrickleondev/Meetup-Ambassadors-CTF---Reverse-Challenge-Writeup/blob/main/rev_ircbot.zip
 
 
 ##  **ÉTAPE 1 : ANALYSE INITIALE**
 
 ### **Première Impression**
 En ouvrant le dossier, je vois un binaire `ircbot` que j'ai eu à  analyser de manière vraiment statique et approfondie (Assembly + le pseudo-code C) car je n'ai pas pu exécuter le malware, juste focus sur les fonctions dans le code.
+
+
+<img width="959" height="520" alt="image" src="https://github.com/user-attachments/assets/a379719a-10d9-430b-b6d8-f6970f4b370a" />
+
 
 ### **Analyse du Binaire**
 
@@ -36,14 +39,16 @@ ircbot: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked,
 
 ```
 
-Je vous laisse aller checker sur  les interpreteurs ELF, ici c'est l'interpreteur ``` /lib64/ld-linux-x86-64.so.2  ``` qui est chargé par le noyau linux à l'exécution du binaire.
+Cet article vous en dira plus sur les ELF interpreter [via ce lien](https://lwn.net/Articles/631631/).
+
+Ici c'est l'interpreteur ``` /lib64/ld-linux-x86-64.so.2  ``` qui est chargé par le noyau linux à l'exécution du binaire.
 
 
 le binaire est un exécutable Linux 64-bit, donc typique pour un malware.
 
 ---
 
-##  **ÉTAPE 2 : OUVERTURE DANS IDA **
+##  **ÉTAPE 2 : OUVERTURE DANS Mon IDA freeware **
 
 
 
