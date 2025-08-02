@@ -22,7 +22,7 @@ L'objectif est alors de retrouver le flag caché dans le binaire malveillant de 
 
 [Accessibles ici](https://github.com/Patrickleondev/Meetup-Ambassadors-CTF---Reverse-Challenge-Writeup/blob/main/rev_ircbot.zip)  ou dans le repertoire.
 
-Avant de commencer je vous invite à lire sur tout ce qui concerne [fonctionnement les Malware Botnets IRC](https://www.zscaler.com/fr/blogs/security-research/irc-botnets-alive-effective-evolving) c'est assez instructif.
+Avant de commencer je vous invite à lire sur tout ce qui concerne le [fonctionnement des Malware Botnets IRC](https://www.zscaler.com/fr/blogs/security-research/irc-botnets-alive-effective-evolving) c'est assez instructif.
 
 ##  **ÉTAPE 1 : ANALYSE INITIALE**
 
