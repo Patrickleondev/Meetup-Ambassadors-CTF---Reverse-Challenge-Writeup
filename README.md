@@ -16,7 +16,8 @@ L'objectif est alors de retrouver le flag caché dans le binaire malveillant de 
 
 ##  **FICHIERS FOURNIS**
 
-https://github.com/Patrickleondev/Meetup-Ambassadors-CTF---Reverse-Challenge-Writeup/blob/main/rev_ircbot.zip
+
+[Accessibles ici](https://github.com/Patrickleondev/Meetup-Ambassadors-CTF---Reverse-Challenge-Writeup/blob/main/rev_ircbot.zip)  ou dans le repertoire.
 
 
 ##  **ÉTAPE 1 : ANALYSE INITIALE**
@@ -46,11 +47,11 @@ Ici c'est l'interpreteur ``` /lib64/ld-linux-x86-64.so.2  ``` qui est chargé pa
 
 le binaire est un exécutable Linux 64-bit, donc typique pour un malware.
 
-[Accessibles ici](https://github.com/Patrickleondev/Meetup-Ambassadors-CTF---Reverse-Challenge-Writeup/blob/main/rev_ircbot.zip)  ou dans le repertoire.
 ---
 
 ##  **ÉTAPE 2 : OUVERTURE DANS Mon IDA freeware **
 
+<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/58be06d2-c916-4ea6-86d3-739c99ad21eb" />
 
 
 ### **Découverte des Fonctions Principales**
