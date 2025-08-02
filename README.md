@@ -125,7 +125,7 @@ signed __int64 start()
 }
 ```
 
-### **Analyse et informations que j'ai reteenu pour la suite:**
+### **Analyse et informations que j'ai retenu pour la suite:**
 
 1. **Génération d'un nombre aléatoire** avec `sys_getrandom`
 2. **Modification du nick** avec des masques binaires
@@ -232,7 +232,7 @@ En naviguant vers ces adresses dans la vue "Hex View-1" :
 
 <img width="1210" height="721" alt="address" src="https://github.com/user-attachments/assets/4abee1d6-a635-4197-8a33-47defec1b7a1" />
 
-#### **1-) Je trouve un now le mot passe : IRC_PROCESS_PASS (à Adresse 0x403130)**
+#### **1-) Je trouve  now le mot passe : IRC_PROCESS_PASS (à l' dresse 0x403130)**
 ```
 4D 33 55 76 31 51 69 30 00
 ```
