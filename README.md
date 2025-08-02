@@ -17,6 +17,8 @@ Dans le cadre du **Meetup Ambassadors CTF**.
 
 L'objectif est alors de retrouver le flag caché dans le binaire malveillant de type IRC Bot.
 
+IRC== [Internet Relay Chat](https://fr.wikipedia.org/wiki/Internet_Relay_Chat)
+
 ##  **FICHIERS FOURNIS**
 
 
@@ -136,9 +138,9 @@ signed __int64 IRC_CONNECT()
 }
 ```
 
-  Ici,  j'ai eu une information assez capitale qui m'a permis meme de comprendre generally le fonctionnement d'un botnet (J'avais recherché sur internet, mais pour ça démeurait toujours abstrait) :
+  Ici,  j'ai eu une information assez capitale qui m'a permis meme de comprendre generally le fonctionnement d'un Malware botnet IRC (J'avais recherché sur internet, mais pour ça démeurait toujours abstrait) :
 
-### Une découverte de l'Adresse de Connexion**
+### **Une découverte de l'Adresse de Connexion**
 - **v2 = 16777343** : En hexadécimal = `0x0100007F` = `127.0.0.1` (le localhost)
 - **v1[1] = 16415** : Port en little-endian = `0x401F` = port 16415 
 
