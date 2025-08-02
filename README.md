@@ -71,7 +71,7 @@ le binaire est un exécutable Linux 64-bit, donc typique pour un malware.
 
 ---
 
-##  **STEP 2 : OUVERTURE DANS Mon IDA freeware **
+##  **STEP 2 : OUVERTURE DANS Mon IDA freeware**
 
 <img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/58be06d2-c916-4ea6-86d3-739c99ad21eb" />
 
